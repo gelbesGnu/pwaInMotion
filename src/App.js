@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+//import ReactDOM from 'react-dom';
+import Tilt from 'react-parallax-tilt';
 
-function App() {
+
+
+const App = () => {
+
+  const [angleY, setAngleY] = useState(null);
+
+
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
+    <Tilt 
+      gyroscope={true} 
+      tiltReverse={false} 
+      glareEnable={true}
+      tiltMaxAngleX={45} 
+      tiltMaxAngleY={45}
+      
+      glarePosition={'top'}
+      
+      perspective={500}
+      onMove={setAngleY}
+      
+    >
+      <div style={{ height: '300px', backgroundColor: 'deeppink', margin: 50 }}>
+        <h1>y:{angleY}</h1>
+      </div>
+    </Tilt>
+  )
+};
 export default App;
